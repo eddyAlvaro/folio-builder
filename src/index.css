@@ -1,21 +1,59 @@
 @import "tailwindcss";
 
-.pf-theme-minimal {
-  --pf-bg: #ffffff;
-  --pf-fg: #0f172a;
-  --pf-muted: #64748b;
-  --pf-accent: #4f46e5;
-  background: var(--pf-bg);
-  color: var(--pf-fg);
-  min-height: 100vh;
-}
+@layer pf {
+  .pf.pf-theme-minimal {
+    --pf-bg: #ffffff;
+    --pf-fg: #0f172a;
+    --pf-muted: #64748b;
+    --pf-accent: #4f46e5;
+    --pf-surface: #f8fafc;
+    --pf-border: #0f172a1a;
+    --pf-radius: 0.5rem;
+    --pf-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    background: var(--pf-bg);
+    color: var(--pf-fg);
+    min-height: 100vh;
+  }
 
-.pf-theme-dark {
-  --pf-bg: #020617;
-  --pf-fg: #e2e8f0;
-  --pf-muted: #94a3b8;
-  --pf-accent: #22d3ee;
-  background: var(--pf-bg);
-  color: var(--pf-fg);
-  min-height: 100vh;
+  .pf.pf-theme-dark {
+    --pf-bg: #020617;
+    --pf-fg: #e2e8f0;
+    --pf-muted: #94a3b8;
+    --pf-accent: #22d3ee;
+    --pf-surface: #0b1220;
+    --pf-border: #e2e8f01a;
+    --pf-radius: 0.5rem;
+    --pf-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.25);
+    background: var(--pf-bg);
+    color: var(--pf-fg);
+    min-height: 100vh;
+  }
+
+  .pf.pf-theme-rose {
+    --pf-bg: #0b0610;
+    --pf-fg: #fde68a;
+    --pf-muted: #f5d58a;
+    --pf-accent: #f43f5e;
+    --pf-surface: #1a0c1a;
+    --pf-border: #fde68a1a;
+    --pf-radius: 0.75rem;
+    --pf-shadow: 0 2px 6px 0 rgb(244 63 94 / 0.2);
+    background: var(--pf-bg);
+    color: var(--pf-fg);
+    min-height: 100vh;
+  }
+
+  .pf.pf-theme-slate {
+    --pf-bg: #111827;
+    --pf-fg: #e5e7eb;
+    --pf-muted: #94a3b8;
+    --pf-accent: #22d3ee;
+    --pf-surface: #111827;
+    --pf-border: #e2e8f01a;
+    --pf-radius: 0.75rem;
+    --pf-shadow: 0 2px 6px 0 rgb(244 63 94 / 0.2);
+    background: var(--pf-bg);
+    color: var(--pf-fg);
+    min-height: 100vh;
+  }
 }

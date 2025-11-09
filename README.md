@@ -1,73 +1,34 @@
-# React + TypeScript + Vite
+# folio-builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Library-like React components to build customizable portfolios with Tailwind v4 and theme tokens.
 
-Currently, two official plugins are available:
+## Dev
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- `pnpm dev` to run locally
+- `pnpm build` for production build
 
-## React Compiler
+## Theming
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+All styles are scoped under a `.pf` root and defined in a `@layer pf` to avoid clashes and allow safe overrides. Components consume CSS variables only — no hardcoded colors.
 
-## Expanding the ESLint configuration
+Tokens exposed today:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- `--pf-bg` page background
+- `--pf-fg` foreground text
+- `--pf-muted` muted text
+- `--pf-accent` accent color
+- `--pf-surface` cards/surfaces background
+- `--pf-border` border color
+- `--pf-radius` border radius
+- `--pf-shadow` shadow value
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Built-in themes: `minimal`, `dark`. Example custom theme included: `pf-theme-rose`.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Usage:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Root wrapper applies theme classes: `className={getThemeClass('dark')}` which returns `"pf pf-theme-dark"`.
+- Override tokens inline:
+  - `<PortfolioLayout style={{ ['--pf-accent']: '#ff6b6b' }} />`
+- Or extend via CSS (loaded after library CSS):
+  - `@layer pf { .pf.pf-theme-mybrand { --pf-accent:#ff6b6b; --pf-surface:#101010; } }`
+  - `<PortfolioLayout theme="minimal" className="pf-theme-mybrand" />`
