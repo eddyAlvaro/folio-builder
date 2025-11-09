@@ -19,8 +19,8 @@ export const Skills: React.FC<Props> = ({ skills, title }) => {
   );
 
   return (
-    <section aria-labelledby="skills-title" className="py-14">
-      <div className="max-w-5xl mx-auto px-4">
+    <section aria-labelledby="skills-title" className="py-4">
+      <div className="max-w-6xl mx-auto px-4">
         <h2 id="skills-title" className="text-2xl font-semibold mb-6">
           {title}
         </h2>
@@ -29,7 +29,7 @@ export const Skills: React.FC<Props> = ({ skills, title }) => {
           {Object.entries(byCategory).map(([cat, list]) => (
             <div
               key={cat}
-              className="rounded-lg border border-(--pf-fg)/10 p-4"
+              className="rounded-lg border border-(--pf-border) p-4"
             >
               <h3 className="text-sm font-medium mb-3 text-(--pf-muted)">
                 {cat}
@@ -53,7 +53,7 @@ export const Skills: React.FC<Props> = ({ skills, title }) => {
                   ) : (
                     <span
                       key={`${s.name}-${i}`}
-                      className="inline-flex items-center rounded-md border border-(--pf-fg)/15 px-2 py-0.5 text-xs"
+                      className="inline-flex items-center rounded-md border border-(--pf-border) px-2 py-0.5 text-xs"
                     >
                       {s.name}
                     </span>

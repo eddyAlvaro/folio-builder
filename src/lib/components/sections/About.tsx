@@ -13,8 +13,8 @@ export const About: React.FC<Props> = ({ data }) => {
   if (!hasContent) return null;
 
   return (
-    <section aria-labelledby="about-title" className="py-14">
-      <div className="max-w-4xl mx-auto px-4 grid gap-6 sm:grid-cols-[auto,1fr] sm:gap-8 items-start">
+    <section aria-labelledby="about-title" className="py-4">
+      <div className="max-w-5xl mx-auto px-4 grid gap-6 sm:grid-cols-[auto,1fr] sm:gap-8 items-start">
         {avatar ? (
           <img
             src={avatar}

@@ -6,7 +6,7 @@ interface HeroProps {
 }
 export const Hero: React.FC<HeroProps> = ({ data }) => {
   return (
-    <header className="max-w-4xl mx-auto py-16 px-4 flex flex-col gap-4">
+    <header className="max-w-5xl mx-auto py-4 px-4 flex flex-col gap-4">
       <p className="text-sm text-(--pf-muted)">Hola, soy</p>
       <h1 className="text-4xl font-bold">{data.name}</h1>
       {data.role ? (

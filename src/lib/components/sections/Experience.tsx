@@ -10,8 +10,8 @@ export const Experience: React.FC<Props> = ({ experience, title }) => {
   if (!experience?.length) return null;
 
   return (
-    <section aria-labelledby="exp-title" className="py-14">
-      <div className="max-w-5xl mx-auto px-4">
+    <section aria-labelledby="exp-title" className="py-4">
+      <div className="max-w-6xl mx-auto px-4">
         <h2 id="exp-title" className="text-2xl font-semibold mb-6">
           {title}
         </h2>
@@ -20,7 +20,7 @@ export const Experience: React.FC<Props> = ({ experience, title }) => {
           {experience.map((e, i) => (
             <article
               key={`${e.company}-${i}`}
-              className="rounded-lg border border-(--pf-fg)/10 p-4 bg-white/5 backdrop-blur-sm"
+              className="rounded-lg border border-(--pf-border) p-4 bg-(--pf-surface) backdrop-blur-sm"
             >
               <div className="flex flex-wrap items-baseline gap-2">
                 <h3 className="text-base font-semibold">{e.role}</h3>
