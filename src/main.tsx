@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import { PortfolioLayout } from "./lib/components/PortfolioLayout";
 import type { PortfolioData } from "./lib/types/portfolio";
+import type { SectionInstance } from "./lib/types/sections";
 const data: PortfolioData = {
   version: 1,
   name: "Eddy Alvaro",
@@ -74,8 +75,38 @@ const data: PortfolioData = {
     },
   ],
 };
+const bento: SectionInstance[] = [
+  { id: "hero", slotClassName: "md:col-span-6" },
+  { id: "about", slotClassName: "md:col-span-6" },
+  { id: "experience", slotClassName: "md:col-span-12" },
+  {
+    id: "projects",
+    title: "Vestidos",
+    variant: "gallery",
+    slotClassName: "md:col-span-6",
+  },
+  {
+    id: "projects",
+    title: "Carteras",
+    variant: "gallery",
+    slotClassName: "md:col-span-6",
+  },
+  { id: "skills", slotClassName: "md:col-span-12" },
+];
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <PortfolioLayout data={data} theme="minimal" />
+    <PortfolioLayout
+      data={data}
+      theme="dark"
+      layout="bento"
+      sections={bento}
+      style={
+        {
+          // "--pf-accent": "#ff6b6b",
+          "--pf-surface": "#101010",
+        } as React.CSSProperties
+      }
+    />
   </StrictMode>
 );
