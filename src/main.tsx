@@ -1,10 +1,112 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import { PortfolioLayout } from "./lib/components/PortfolioLayout";
+import type { PortfolioData } from "./lib/types/portfolio";
+import type { SectionInstance } from "./lib/types/sections";
+const data: PortfolioData = {
+  version: 1,
+  name: "Eddy Alvaro",
+  role: "Software Developer",
+  headline: "Desarrollo front con React/Next y NestJS en el backend.",
+  about: {
+    summary:
+      "Desarrollador web con foco en performance, DX y componentización. Experiencia en e-commerce y paneles de administración.",
+    highlights: [
+      "React + TypeScript + Tailwind",
+      "Next.js, Server Actions básicas",
+      "Tables, modals y sidebars accesibles",
+    ],
+  },
+  projects: [
+    {
+      title: "Micro-ecommerce multitienda",
+      description:
+        "Core de carrito/búsqueda desacoplado de branding; flags por .env.",
+      tags: ["Next.js", "Tailwind", "Zustand"],
+      link: "#",
+      repo: "#",
+      image:
+        "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1200",
+    },
+    {
+      title: "Admin panel headless",
+      description:
+        "Formularios dinámicos por schema, roles, filtros avanzados y export.",
+      tags: ["React", "RHForm", "Zod", "TanStack Table"],
+      link: "#",
+      repo: "#",
+    },
+    {
+      title: "Portfolio component library",
+      description:
+        "Librería de secciones y temas; data-driven, themeable, reorderable.",
+      tags: ["Library", "Storybook"],
+      repo: "#",
+    },
+  ],
+  skills: [
+    { name: "React", level: 5, category: "Frontend" },
+    { name: "Next.js", level: 4, category: "Frontend" },
+    { name: "Tailwind", level: 4, category: "Frontend" },
+    { name: "NestJS", level: 3, category: "Backend" },
+    { name: "PostgreSQL", level: 3, category: "Backend" },
+    { name: "Vite", category: "Tooling" },
+  ],
+  experience: [
+    {
+      company: "Innovahope",
+      role: "Frontend Developer",
+      period: "2024 — 2025",
+      location: "Arequipa, PE (Remoto)",
+      link: "#",
+      achievements: [
+        "Implementé features en e-commerce y corrección de bugs.",
+        "Despliegues y configuración básica de hosting/Docker.",
+      ],
+    },
+    {
+      company: "Proyecto freelance",
+      role: "Full-stack (Next + Nest)",
+      period: "2025",
+      achievements: [
+        "Diseñé una librería de portafolios themeable y data-driven.",
+      ],
+    },
+  ],
+};
+const bento: SectionInstance[] = [
+  { id: "hero", slotClassName: "md:col-span-6" },
+  { id: "about", slotClassName: "md:col-span-6" },
+  { id: "experience", slotClassName: "md:col-span-12" },
+  {
+    id: "projects",
+    title: "Vestidos",
+    variant: "gallery",
+    slotClassName: "md:col-span-6",
+  },
+  {
+    id: "projects",
+    title: "Carteras",
+    variant: "gallery",
+    slotClassName: "md:col-span-6",
+  },
+  { id: "skills", slotClassName: "md:col-span-12" },
+];
 
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
-)
+    <PortfolioLayout
+      data={data}
+      theme="dark"
+      layout="bento"
+      sections={bento}
+      style={
+        {
+          // "--pf-accent": "#ff6b6b",
+          "--pf-surface": "#101010",
+        } as React.CSSProperties
+      }
+    />
+  </StrictMode>
+);
